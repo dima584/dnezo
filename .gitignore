@@ -1,0 +1,12 @@
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+.venv/
+poetry.lock
+__pycache__/
+*.pyc
+.venv/
+.env
