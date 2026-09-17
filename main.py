@@ -9,3 +9,13 @@ app = FastAPI(
 @app.get("/")
 def read_root():
     return {"message": "Hello, Git!"}
+
+@app.get("/ping")
+def ping():
+    return {"ping": "pong"}
+
+# Ендпоінт для перевірки статусу
+
+@app.get("/status")
+def get_status():
+    return {"status": "ok"}
