@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI(
     title="Lab 2 REST API",
-    description="Базовий REST-сервіс для лабораторної роботи з Git",
+    description="Базовий REST-сервіс для лабораторної роботи з Git. p.s оновлено для коміта",
     version="1.0.0"
 )
 
