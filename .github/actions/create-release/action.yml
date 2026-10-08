@@ -1,0 +1,20 @@
+name: "Create Tag and Release"
+description: "Creates a git tag and GitHub release"
+inputs:
+  version:
+    description: "Version to tag and release"
+    required: true
+  description:
+    description: "Release notes"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Create Release via GitHub CLI
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh release create "${{ inputs.version }}" \
+          --title "Release ${{ inputs.version }}" \
+          --notes "${{ inputs.description }}"
