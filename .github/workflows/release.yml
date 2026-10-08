@@ -1,0 +1,44 @@
+name: Main Branch Release
+on:
+  push:
+    branches: [ main ]
+    # Виключення для "Healthy Contributions" файлів
+    paths-ignore:
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'CODE_OF_CONDUCT.md'
+      - '.github/ISSUE_TEMPLATE/**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Обов'язково для створення релізів!
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Extract Version and Notes
+        id: extract
+        run: |
+          # Симуляція отримання версії (для цілей лабораторної)
+          echo "VERSION=v1.0.${{ github.run_number }}" >> $GITHUB_ENV
+          echo "NOTES=Автоматичний реліз згідно зі змінами у гілці main" >> $GITHUB_ENV
+
+      - name: Build Package
+        run: |
+          mkdir build
+          echo "Release package payload" > build/package.zip
+          sha256sum build/package.zip > build/package.zip.sha256
+
+      - name: Create Release (Using custom action)
+        uses: ./.github/actions/create-release
+        with:
+          version: ${{ env.VERSION }}
+          description: ${{ env.NOTES }}
+
+      - name: Upload Release Assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ env.VERSION }}" build/package.zip build/package.zip.sha256
