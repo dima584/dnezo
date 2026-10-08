@@ -1,0 +1,26 @@
+name: PR Build Check
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build Package
+        run: |
+          mkdir build
+          echo "Dummy package content" > build/package.zip
+          
+      - name: Generate SHA-256
+        run: |
+          sha256sum build/package.zip > build/package.zip.sha256
+          
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-build-artifacts
+          path: build/
