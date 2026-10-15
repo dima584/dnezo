@@ -17,19 +17,8 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
-    "ruff (>=0.17.0,<0.18.0)",
-    "pytest (>=9.1.1,<10.0.0)",
-    "pytest-cov (>=7.1.0,<8.0.0)",
-    "allure-pytest (>=2.16.2,<3.0.0)"
+    "ruff>=0.17.0",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "allure-pytest>=2.16.2"
 ]
-
-[tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.110.0"  # (або твої попередні основні пакети проєкту)
-uvicorn = "^0.28.0"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.0.0"
-pytest-cov = "^6.0.0"
-ruff = "^0.17.0"
-allure-pytest = "^2.13.5"
