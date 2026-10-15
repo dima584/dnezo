@@ -24,3 +24,16 @@ jobs:
         with:
           name: pr-build-artifacts
           path: build/
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Poetry and Dependencies
+        run: |
+          pip install poetry
+          poetry install
+
+      - name: Run Ruff Linter
+        run: poetry run ruff check .
