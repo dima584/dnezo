@@ -3,14 +3,13 @@ name = "lab2-rest-api"
 version = "0.1.0"
 description = "Git lab REST service"
 authors = [
-    {name = "Dmytro Nezola",email = "nezola.dima2684@gmail.com"}
+    {name = "Dmytro Nezola", email = "nezola.dima2684@gmail.com"}
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "fastapi (>=0.141.1,<0.142.0)",
-    "uvicorn (>=0.53.0,<0.54.0)"
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0"
 ]
-
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -20,11 +19,8 @@ build-backend = "poetry.core.masonry.api"
 dev = [
     "ruff (>=0.17.0,<0.18.0)",
     "pytest (>=9.1.1,<10.0.0)",
-
     "pytest-cov (>=7.1.0,<8.0.0)",
     "allure-pytest (>=2.16.2,<3.0.0)"
-    "pytest-cov (>=7.1.0,<8.0.0)"
-
 ]
 
 [tool.poetry.dependencies]
